@@ -1,15 +1,21 @@
-const express =require("express")
-const dotenv =require('dotenv')
-const app=express()
+const express = require('express');
+const dotenv = require('dotenv');
+require('./config/db');
+const routes = require('./routes/router');
+const cors = require('cors');
 
-dotenv.config()
+const app = express();
 
+app.use(cors());
+app.use(express.json());
+dotenv.config();
 
+app.use(routes);
 
+app.use('/uploads', express.static('./uploads'));
 
-const port =process.env.PORT
+const port = process.env.PORT;
 
-app.listen(port , ()=>{
-
-    console.log(`server is running on this ${port}`);
-})
+app.listen(port, () => {
+  console.log(`server is running on this ${port}`);
+});
