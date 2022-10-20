@@ -1,12 +1,21 @@
 import './App.css';
+import Header from './components/Header';
+import Home from './components/Home';
+import Register from './components/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Routes,Route} from "react-router-dom"
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello World  </h1>
-      </header>
-    </div>
+    <>
+      <Header />
+
+      <Routes>
+        <Route path='/' element={ <Home />} />
+        <Route path='/register' element={ <Register />} />
+      </Routes>
+     
+    </>
   );
 }
 
